@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="fuel_tank_main" model="fuel.tank">
+        <field name="name">Tanque Principal (6000L)</field>
+        <field name="capacity_liters">6000</field>
+        <field name="current_liters">0</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- MENU ROOT -->
+    <menuitem id="menu_fuel_root" name="Combustível"/>
+
+    <!-- MENU: ABASTECIMENTOS -->
+    <record id="view_fuel_log_tree" model="ir.ui.view">
+        <field name="name">fuel.log.tree</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date_time"/>
+                <field name="vehicle_id"/>
+                <field name="tank_id"/>
+                <field name="odometer"/>
+                <field name="liters"/>
+                <field name="price_per_liter"/>
+                <field name="total"/>
+                <field name="km_rodado"/>
+                <field name="consumo"/>
+                <field name="custo_km"/>
+                <field name="driver"/>
+                <field name="responsible_user_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_fuel_log_form" model="ir.ui.view">
+        <field name="name">fuel.log.form</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="vehicle_id"/>
+                        <field name="tank_id"/>
+                        <field name="date_time"/>
+                    </group>
+
+                    <group>
+                        <field name="odometer"/>
+                        <field name="liters"/>
+                        <field name="price_per_liter"/>
+                        <field name="total" readonly="1"/>
+                    </group>
+
+                    <group>
+                        <field name="km_rodado" readonly="1"/>
+                        <field name="consumo" readonly="1"/>
+                        <field name="custo_km" readonly="1"/>
+                    </group>
+
+                    <group>
+                        <field name="driver"/>
+                        <field name="responsible_user_id" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fuel_log" model="ir.actions.act_window">
+        <field name="name">Abastecimentos</field>
+        <field name="res_model">fuel.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_fuel_logs" name="Abastecimentos" parent="menu_fuel_root" action="action_fuel_log"/>
+
+    <!-- MENU: TANQUE -->
+    <menuitem id="menu_fuel_tank" name="Tanque" parent="menu_fuel_root" action="controle_combustivel.action_fuel_tank"/>
+
+    <!-- MENU: ENTRADAS/AJUSTES (só admin/estoque) -->
+    <menuitem id="menu_fuel_stock_moves"
+              name="Entradas/Ajustes"
+              parent="menu_fuel_root"
+              action="controle_combustivel.action_fuel_stock_move"
+              groups="controle_combustivel.group_fuel_admin"/>
+
+    <!-- ABA NO VEÍCULO -->
+    <record id="fleet_vehicle_form_fuel" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.fuel</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Combustível">
+                    <field name="fuel_log_ids">
+                        <tree editable="bottom">
+                            <field name="date_time"/>
+                            <field name="tank_id"/>
+                            <field name="odometer"/>
+                            <field name="liters"/>
+                            <field name="price_per_liter"/>
+                            <field name="total" readonly="1"/>
+                            <field name="km_rodado" readonly="1"/>
+                            <field name="consumo" readonly="1"/>
+                            <field name="custo_km" readonly="1"/>
+                            <field name="driver"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

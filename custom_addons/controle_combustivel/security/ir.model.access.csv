@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fuel_log_driver,fuel.log driver,model_fuel_log,controle_combustivel.group_fuel_driver,1,1,1,0
+access_fuel_log_analyst,fuel.log analyst,model_fuel_log,controle_combustivel.group_fuel_analyst,1,0,0,0
+access_fuel_log_admin,fuel.log admin,model_fuel_log,controle_combustivel.group_fuel_admin,1,1,1,1
+
+access_fuel_tank_driver,fuel.tank driver,model_fuel_tank,controle_combustivel.group_fuel_driver,1,0,0,0
+access_fuel_tank_analyst,fuel.tank analyst,model_fuel_tank,controle_combustivel.group_fuel_analyst,1,0,0,0
+access_fuel_tank_admin,fuel.tank admin,model_fuel_tank,controle_combustivel.group_fuel_admin,1,1,1,1
+
+access_fuel_move_analyst,fuel.stock.move analyst,model_fuel_stock_move,controle_combustivel.group_fuel_analyst,1,0,0,0
+access_fuel_move_admin,fuel.stock.move admin,model_fuel_stock_move,controle_combustivel.group_fuel_admin,1,1,1,1
