@@ -91,10 +91,4 @@ Resumo da entrega:
 - Ambiente Odoo Community configurado.
 - Modulo com abastecimentos, controle de tanque e permissoes por perfil.
 - Diferenciais: relatorios (pivot/graph) e estrutura de integracao de recebimento de compras.
-- Proposta tecnica para integracao NF-e/NFS-e descrita no README.
-
-Atenciosamente,
-`SEU NOME`
-
-## Observacao de prazo
-No enunciado aparecem duas datas de prazo: `24/01/2026` e `15/02/2026`. Ambas sao anteriores a `19/02/2026`.
+- Proposta tecnica para integracao NF-e/NFS-e.
