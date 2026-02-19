@@ -51,7 +51,7 @@ Modulo customizado para registrar abastecimentos e controlar estoque de combusti
 2. Atualize a lista de aplicativos.
 3. Instale/atualize o modulo `Controle de Combustivel`.
 
-## Roteiro rapido de teste (recrutador)
+## Roteiro rapido de teste
 1. Acesse `Combustivel > Tanque` e confirme o tanque principal de 6000L.
 2. Como Admin, crie uma `Entrada` em `Combustivel > Entradas/Ajustes`.
 3. Registre um abastecimento em `Combustivel > Abastecimentos`.
