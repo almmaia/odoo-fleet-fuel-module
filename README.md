@@ -83,16 +83,7 @@ Modulo customizado para registrar abastecimentos e controlar estoque de combusti
 - Regras de negocio implementadas com ORM e validacoes.
 - Views com foco operacional (tree/form) e analitico (pivot/graph).
 
-## Modelo de e-mail de envio
-Assunto: `VAGA DEV PYTHON - SEU NOME`
 
-Corpo sugerido:
-
-Prezados,
-
-Segue minha entrega do Teste Pratico para a vaga de Desenvolvedor(a) Full Stack Python Junior.
-
-- Repositorio: `<cole_o_link_do_repositorio>`
 - Modulo: `controle_combustivel`
 - Versao: `1.3.0`
 
@@ -101,8 +92,6 @@ Resumo da entrega:
 - Modulo com abastecimentos, controle de tanque e permissoes por perfil.
 - Diferenciais: relatorios (pivot/graph) e estrutura de integracao de recebimento de compras.
 - Proposta tecnica para integracao NF-e/NFS-e descrita no README.
-
-Fico a disposicao para esclarecimentos.
 
 Atenciosamente,
 `SEU NOME`
