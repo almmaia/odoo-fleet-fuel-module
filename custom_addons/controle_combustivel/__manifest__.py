@@ -1,7 +1,7 @@
 {
-    "name": "Controle de Combustível",
-    "version": "1.1.0",
-    "summary": "Abastecimentos + Tanque 6000L + Permissões",
+    "name": "Controle de Combustivel",
+    "version": "1.3.0",
+    "summary": "Abastecimentos, tanque 6000L, relatorios e integracao de recebimento",
     "category": "Fleet",
     "author": "Alan Maia",
     "license": "LGPL-3",
@@ -12,8 +12,8 @@
         "data/fuel_tank_data.xml",
         "views/fuel_tank_views.xml",
         "views/fuel_stock_move_views.xml",
-        "views/fuel_log_views.xml",
+        "views/fuel_log_views.xml"
     ],
     "installable": True,
-    "application": True,
+    "application": True
 }

@@ -9,6 +9,9 @@
                 <field name="date"/>
                 <field name="tank_id"/>
                 <field name="move_type"/>
+                <field name="integration_source"/>
+                <field name="source_document"/>
+                <field name="source_partner"/>
                 <field name="liters"/>
                 <field name="unit_price"/>
                 <field name="total"/>
@@ -27,6 +30,11 @@
                         <field name="tank_id"/>
                         <field name="date"/>
                         <field name="move_type"/>
+                    </group>
+                    <group>
+                        <field name="integration_source"/>
+                        <field name="source_document"/>
+                        <field name="source_partner"/>
                     </group>
                     <group>
                         <field name="liters"/>

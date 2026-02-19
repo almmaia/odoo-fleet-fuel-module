@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <!-- MENU ROOT -->
-    <menuitem id="menu_fuel_root" name="Combustível"/>
+    <menuitem id="menu_fuel_root"
+              name="Combustivel"
+              groups="controle_combustivel.group_fuel_driver,controle_combustivel.group_fuel_analyst,controle_combustivel.group_fuel_admin"/>
 
-    <!-- MENU: ABASTECIMENTOS -->
     <record id="view_fuel_log_tree" model="ir.ui.view">
         <field name="name">fuel.log.tree</field>
         <field name="model">fuel.log</field>
@@ -60,32 +60,90 @@
         </field>
     </record>
 
+    <record id="view_fuel_log_search" model="ir.ui.view">
+        <field name="name">fuel.log.search</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="vehicle_id"/>
+                <field name="tank_id"/>
+                <field name="driver"/>
+                <field name="responsible_user_id"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_vehicle" string="Equipamento" context="{'group_by': 'vehicle_id'}"/>
+                    <filter name="group_driver" string="Motorista" context="{'group_by': 'driver'}"/>
+                    <filter name="group_tank" string="Tanque" context="{'group_by': 'tank_id'}"/>
+                    <filter name="group_user" string="Usuario" context="{'group_by': 'responsible_user_id'}"/>
+                    <filter name="group_date" string="Data" context="{'group_by': 'date_time:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_fuel_log_pivot" model="ir.ui.view">
+        <field name="name">fuel.log.pivot</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <pivot string="Analise de Abastecimentos">
+                <field name="vehicle_id" type="row"/>
+                <field name="date_time" type="col" interval="month"/>
+                <field name="liters" type="measure"/>
+                <field name="total" type="measure"/>
+                <field name="km_rodado" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_fuel_log_graph" model="ir.ui.view">
+        <field name="name">fuel.log.graph</field>
+        <field name="model">fuel.log</field>
+        <field name="arch" type="xml">
+            <graph string="Abastecimentos por Veiculo" type="bar">
+                <field name="vehicle_id"/>
+                <field name="liters" type="measure"/>
+                <field name="total" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
     <record id="action_fuel_log" model="ir.actions.act_window">
         <field name="name">Abastecimentos</field>
         <field name="res_model">fuel.log</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
+        <field name="search_view_id" ref="view_fuel_log_search"/>
     </record>
 
-    <menuitem id="menu_fuel_logs" name="Abastecimentos" parent="menu_fuel_root" action="action_fuel_log"/>
+    <menuitem id="menu_fuel_logs"
+              name="Abastecimentos"
+              parent="menu_fuel_root"
+              action="action_fuel_log"
+              groups="controle_combustivel.group_fuel_driver,controle_combustivel.group_fuel_analyst,controle_combustivel.group_fuel_admin"/>
 
-    <!-- MENU: TANQUE -->
-    <menuitem id="menu_fuel_tank" name="Tanque" parent="menu_fuel_root" action="controle_combustivel.action_fuel_tank"/>
+    <menuitem id="menu_fuel_reports"
+              name="Relatorios"
+              parent="menu_fuel_root"
+              action="action_fuel_log"
+              groups="controle_combustivel.group_fuel_analyst,controle_combustivel.group_fuel_admin"/>
 
-    <!-- MENU: ENTRADAS/AJUSTES (só admin/estoque) -->
+    <menuitem id="menu_fuel_tank"
+              name="Tanque"
+              parent="menu_fuel_root"
+              action="controle_combustivel.action_fuel_tank"
+              groups="controle_combustivel.group_fuel_driver,controle_combustivel.group_fuel_analyst,controle_combustivel.group_fuel_admin"/>
+
     <menuitem id="menu_fuel_stock_moves"
               name="Entradas/Ajustes"
               parent="menu_fuel_root"
               action="controle_combustivel.action_fuel_stock_move"
-              groups="controle_combustivel.group_fuel_admin"/>
+              groups="controle_combustivel.group_fuel_analyst,controle_combustivel.group_fuel_admin"/>
 
-    <!-- ABA NO VEÍCULO -->
     <record id="fleet_vehicle_form_fuel" model="ir.ui.view">
         <field name="name">fleet.vehicle.form.fuel</field>
         <field name="model">fleet.vehicle</field>
         <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Combustível">
+                <page string="Combustivel">
                     <field name="fuel_log_ids">
                         <tree editable="bottom">
                             <field name="date_time"/>
